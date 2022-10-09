@@ -172,16 +172,16 @@ api.leaveServer(serverId, yourUserId) // This id should be yours.
 
 // Chat & Messaging
 
-api.sendMessage(channelOrThreadId, message, body = {})
-api.getMessages(channelOrThreadId, limit, params = {})
-api.getMessage(channelOrThreadId, messageId)
-api.editMessage(channelOrThreadId, messageId, newMessage, body = {})
-api.deleteMessage(channelOrThreadId, messageId)
-api.replyToMessage(channelOrThreadId, repliedMessageId, message, body = {})
+api.sendMessage(channelId, message, body = {})
+api.getMessages(channelId, limit, params = {})
+api.getMessage(channelId, messageId)
+api.editMessage(channelId, messageId, newMessage, body = {})
+api.deleteMessage(channelId, messageId)
+api.replyToMessage(channelId, repliedMessageId, message, body = {})
 
 // Use this generator: https://old.message.style/dashboard
 // Click `+` at the bottom in the embed section then copy the `embed` key in the JSON output.
-api.sendEmbed(channelOrThreadId, embed = { title: 'Title', description: 'Description' }) // if you don't want to set author name/url/icon_url just write undefined. e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
+api.sendEmbed(channelId, embed = { title: 'Title', description: 'Description' }) // if you don't want to set author name/url/icon_url just write undefined. e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
 
 api.pinnedMessages(channelId)
     
@@ -255,8 +255,8 @@ api.getRSVP(channelId, calendarId)
 
 // Reactions
 
-api.addReaction(channelOrThreadId, contentId, emoteId)
-api.deleteReaction(channelOrThreadId, contentId, emoteId)
+api.addReaction(channelId, contentId, emoteId)
+api.deleteReaction(channelId, contentId, emoteId)
 
 // Server XP
 
