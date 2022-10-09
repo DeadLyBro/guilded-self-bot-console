@@ -51,11 +51,51 @@ Update `cid` to the channel you are watching, get the last 100 messages, send a 
 }
 ```
 
+## Automatic reply chat with some response
+
+You can change `const search` and `let messages`
+
+```js
+{
+    id();
+
+    const channelId = cid;
+    const serverId = sid;
+
+    const search = [`Gm`,`GM`,`Morning`,`GM bro`,`yo`,`sup`,`wsup`]
+    let message = [`GM Fam`,`Gm, how are u?`,`morning bro`,`yo, how are u?`,`all good fam`,`good bro, hbu?`]
+	
+    const seenMessagesIds = new Set();
+	
+    var loop = true;
+    var i = 0;
+	
+    let welcome = await api.sendMessage(channelId, 'Welcome...'); // If you delete this message, code don't work
+    let userId = welcome.message.createdBy // If you delete welcome message, code don't work
+	
+    while (loop) {
+        const messages = await api.getMessages(cid, 100, { after: welcome.message.createdAt });
+
+        const found = messages.messages.filter(msg => msg.content.includes(search[i]) && !seenMessagesIds.has(msg.id) && msg.createdBy != userId );
+        
+        if (found.length > 0) {
+		for (const msg of found) {
+                	console.log(`Found message | ID= ${msg.id} | C= "${msg.content}" | A= ${(await api.getUser(serverId, msg.createdBy)).member.user.name}#${(await api.getUser(serverId, msg.createdBy)).member.user.id}`);
+                	seenMessagesIds.add(msg.id);
+                	const sent = await api.replyToMessage(msg.channelId, msg.id, message[i]);
+                	seenMessagesIds.add(sent.message.id);
+            	}
+
+        }
+
+	i = (i + 1) % search.length
+
+        await api.delay(5*1000);
+    }
+}
+```
+
 ## Send an embed
-
-Update soon...
-
-## Run in Node.js
 
 Update soon...
 
