@@ -99,10 +99,6 @@ You can change `const search` and `let messages`
 
 Update soon...
 
-## Use multiple account tokens
-
-Update soon...
-
 ## Use a bot account
 
 This specific script only works for user accounts. If you want to use a bot account, you need to use guilded.js!
