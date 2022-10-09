@@ -119,17 +119,17 @@
 
     // Chat & Messaging
 
-    sendMessage: (channelOrThreadId, message, body = {}) => apiCall(`/channels/${channelOrThreadId}/messages`, { content: message, ...body }, 'POST'),
-    getMessages: (channelOrThreadId, limit, params = {}) => apiCall(`/channels/${channelOrThreadId}/messages?limit=${limit ?? 100}&${qs(params)}`),
-    getMessage: (channelOrThreadId, messageId) => apiCallv1(`/channels/${channelOrThreadId}/messages/${messageId}`, 'GET'),
-    editMessage: (channelOrThreadId, messageId, newMessage, body = {}) => apiCal(`/channels/${channelOrThreadId}/messages/${messageId}`, { content: { object: "value", document: { object: "document", nodes: [ { object: "block", type: "paragraph", nodes: [ { object: "text", leaves: [ { object: "leaf", text: newMessage } ] } ]  } ] }}, ...body }, 'PUT'),
-    deleteMessage: (channelOrThreadId, messageId) => apiCall(`/channels/${channelOrThreadId}/messages/${messageId}`, null, 'DELETE'),
-    replyToMessage: (channelOrThreadId, repliedMessageId, message, body = {}) =>
-      apiCall(`/channels/${channelOrThreadId}/messages`, { content: message, repliesToIds: [repliedMessageId], ...body }, 'POST'),
+    sendMessage: (channelId, message, body = {}) => apiCall(`/channels/${channelId}/messages`, { content: message, ...body }, 'POST'),
+    getMessages: (channelId, limit, params = {}) => apiCall(`/channels/${channelId}/messages?limit=${limit ?? 100}&${qs(params)}`),
+    getMessage: (channelId, messageId) => apiCallv1(`/channels/${channelId}/messages/${messageId}`, 'GET'),
+    editMessage: (channelId, messageId, newMessage, body = {}) => apiCal(`/channels/${channelId}/messages/${messageId}`, { content: { object: "value", document: { object: "document", nodes: [ { object: "block", type: "paragraph", nodes: [ { object: "text", leaves: [ { object: "leaf", text: newMessage } ] } ]  } ] }}, ...body }, 'PUT'),
+    deleteMessage: (channelId, messageId) => apiCall(`/channels/${channelId}/messages/${messageId}`, null, 'DELETE'),
+    replyToMessage: (channelId, repliedMessageId, message, body = {}) =>
+      apiCall(`/channels/${channelId}/messages`, { content: message, repliesToIds: [repliedMessageId], ...body }, 'POST'),
 
     // Use this generator: https://old.message.style/dashboard
     // Click `+` at the bottom in the embed section then copy the `embed` key in the JSON output.
-    sendEmbed: (channelOrThreadId, embed = { title: 'Title', description: 'Description' }) => apiCall(`/channels/${channelOrThreadId}/messages`, { content: ' ', embeds: [ embed ] }, 'POST'), // if you don't want to set author name/url/icon_url just write undefined. e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
+    sendEmbed: (channelId, embed = { title: 'Title', description: 'Description' }) => apiCall(`/channels/${channelId}/messages`, { content: ' ', embeds: [ embed ] }, 'POST'), // if you don't want to set author name/url/icon_url just write undefined. e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
 
     pinnedMessages: channelId => apiCal(`/channels/${channelId}/pins`),
     
@@ -204,8 +204,8 @@
 
     // Reactions
 
-    addReaction: (channelOrThreadId, contentId, emoteId) => apiCall(`/channels/${channelOrThreadId}/content/${contentId}/emotes/${emoteId}`, null, 'PUT'),
-    deleteReaction: (channelOrThreadId, contentId, emoteId) => apiCall(`/channels/${channelOrThreadId}/content/${contentId}/emotes/${emoteId}`, null, 'DELETE'),
+    addReaction: (channelId, contentId, emoteId) => apiCall(`/channels/${channelId}/content/${contentId}/emotes/${emoteId}`, null, 'PUT'),
+    deleteReaction: (channelId, contentId, emoteId) => apiCall(`/channels/${channelId}/content/${contentId}/emotes/${emoteId}`, null, 'DELETE'),
 
     // Server XP
 
