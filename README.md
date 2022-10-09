@@ -36,7 +36,7 @@ Update `cid` to the channel you are watching, get the last 100 messages, send a 
   await delay(2000)
 
   // Edit a message
-  let editedMessage = await api.editMessage(channelId, sentMessage.id, 'Hello, edited!')
+  let editedMessage = await api.editMessage(channelId, sentMessage.message.id, 'Hello, edited!')
 
   await delay(2000)
 
