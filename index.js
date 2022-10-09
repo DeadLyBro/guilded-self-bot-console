@@ -144,7 +144,7 @@
     kickUser: (serverId, userId) => apiCall(`/servers/${serverId}/members/${userId}`, null, 'DELETE'), // I haven't tried
     getUsers: serverId => apiCallv1(`/servers/${serverId}/members`, 'GET'),
 
-    setCustomStatus: (text, customReactionId, expireInMs) => apiCal(`/users/me/status`, { "content":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"paragraph","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text": text,"marks":[]}]}]}]}},"customReactionId": customReactionId, "expireInMs": expireInMs }, 'POST'),
+    setCustomStatus: (text, customReactionId, expireInMs) => apiCal(`/users/me/status`, { "content":{"object":"value","document":{"object":"document","data":{},"nodes":[{"object":"block","type":"paragraph","data":{},"nodes":[{"object":"text","leaves":[{"object":"leaf","text": text,"marks":[]}]}]}]}},"customReactionId": customReactionId, "expireInMs": expireInMs ?? 0 }, 'POST'),
     deleteCustomStatus: () => apiCal(`/users/me/status`, null, 'DELETE'),
 
     setGameStatus: (id, gameId, type) => apiCal(`/users/me/status/transient`, {"id": id, "gameId": gameId,"type": type}, 'POST'), 
