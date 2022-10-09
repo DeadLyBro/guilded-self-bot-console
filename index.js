@@ -268,7 +268,7 @@
     } else if (document.querySelector("div[class*='NavV4TeamSelectorRow-container-active NavV4TeamSelectorRow-team-id-']").getAttribute("class").slice(225,-52) != undefined) {
       sid = document.querySelector("div[class*='NavV4TeamSelectorRow-container-active NavV4TeamSelectorRow-team-id-']").getAttribute("class").slice(225,-52)
     } else {
-      console.log("Cannot get Server id!!");
+      console.log(`%cCould not retrieve Server id!!! Please look a channel and write \`id()\` again to get Server id!`, 'color: red; font-size: 16pt')
     }
     
     gid = window.location.href.split('/').slice(5)[0]
