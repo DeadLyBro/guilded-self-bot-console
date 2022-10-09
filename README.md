@@ -82,8 +82,7 @@ You can change `const search` and `let messages`
 		for (const msg of found) {
                 	console.log(`Found message | ID= ${msg.id} | C= "${msg.content}" | A= ${(await api.getUser(serverId, msg.createdBy)).member.user.name}#${(await api.getUser(serverId, msg.createdBy)).member.user.id}`);
                 	seenMessagesIds.add(msg.id);
-                	const sent = await api.replyToMessage(msg.channelId, msg.id, message[i]);
-                	seenMessagesIds.add(sent.message.id);
+                	await api.replyToMessage(msg.channelId, msg.id, message[i]);
             	}
 
         }
