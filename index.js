@@ -265,10 +265,10 @@
   var id = (log = true) => {
     if (document.querySelector('.TeamSelectorItem-container span div.NavSelectorItem-container-active div div.NavSelectorItem-contents') != undefined) {
       sid = document.querySelector('.TeamSelectorItem-container span div.NavSelectorItem-container-active div div.NavSelectorItem-contents').getAttribute('data-team-id')
-    }
-
-    if (document.querySelector("div[class*='NavV4TeamSelectorRow-container-active NavV4TeamSelectorRow-team-id-']").getAttribute("class").slice(225,-52) != undefined) {
+    } else if (document.querySelector("div[class*='NavV4TeamSelectorRow-container-active NavV4TeamSelectorRow-team-id-']").getAttribute("class").slice(225,-52) != undefined) {
       sid = document.querySelector("div[class*='NavV4TeamSelectorRow-container-active NavV4TeamSelectorRow-team-id-']").getAttribute("class").slice(225,-52)
+    } else {
+      console.log("Cannot get Server id!!");
     }
     
     gid = window.location.href.split('/').slice(5)[0]
