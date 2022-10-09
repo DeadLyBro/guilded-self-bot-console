@@ -265,8 +265,10 @@
   var id = (log = true) => {
     if (document.querySelector('.TeamSelectorItem-container span div.NavSelectorItem-container-active div div.NavSelectorItem-contents') != undefined) {
       sid = document.querySelector('.TeamSelectorItem-container span div.NavSelectorItem-container-active div div.NavSelectorItem-contents').getAttribute('data-team-id')
-    }else {
-      console.log(`%cCould not retrieve Server id!!! Please look a channel and write \`id()\` again to get Server id!`, 'color: red; font-size: 16pt')
+    }
+
+    if (document.querySelector("div[class*='NavV4TeamSelectorRow-container-active NavV4TeamSelectorRow-team-id-']").getAttribute("class").slice(225,-52) != undefined) {
+      sid = document.querySelector("div[class*='NavV4TeamSelectorRow-container-active NavV4TeamSelectorRow-team-id-']").getAttribute("class").slice(225,-52)
     }
     
     gid = window.location.href.split('/').slice(5)[0]
