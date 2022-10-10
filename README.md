@@ -285,8 +285,7 @@ api.editMessage(channelId, messageId, newMessage, body = {})
 api.deleteMessage(channelId, messageId)
 api.replyToMessage(channelId, repliedMessageId, message, body = {})
 
-// Use this generator: https://old.message.style/dashboard
-// Click `+` at the bottom in the embed section then copy the `embed` key in the JSON output.
+// Check this site to avoid posting wrong embed; https://www.guilded.gg/docs/api/chat/ChatEmbed
 api.sendEmbed(channelId, embed = { title: 'Title', description: 'Description' }) // if you don't want to set author name/url/icon_url just write undefined. e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
 
 api.pinnedMessages(channelId)
