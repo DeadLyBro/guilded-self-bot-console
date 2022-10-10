@@ -226,6 +226,87 @@ Guilded recently made its rate limiting strictier. I recommend 1100ms or 1500ms 
 }
 ```
 
+## Do anything to every messages (already sent) in a text channel
+
+Pass your custom function!
+
+This example will apply all reactions already there on all messages, then add 👋 if message says `hi!!` or `hello`.
+
+```js
+{
+  id()
+  let channelId = cid
+  let amount = 99999999
+  let delayMs = 500
+
+  const seenMessageIds = new Set()
+
+  let actionFn = async (channelId, message) => {
+    //
+    // Your custom code here
+    //
+    let wasActiontriggered = false
+
+    // Copy all reactions already present on message
+    for (const reaction of message.reactions || []) {
+      let reactionToAdd = reaction.emoji.id ? `${reaction.emoji.name}:${reaction.emoji.id}` : reaction.emoji.name
+      await api.addReaction(channelId, message.id, reactionToAdd)
+      wasActiontriggered = true
+      await delay(delayMs)
+    }
+
+    // If person said `hello!!!` or `hi!`, react with waving hand 👋
+    if (message.content.match(/^(?:hi|hello)!*$/) && !seenMessageIds.has(message.id)) {
+      await api.addReaction(channelId, message.id, 90001206)
+      seenMessageIds.add(message.id)
+      wasActiontriggered = true
+    }
+
+    // Return a boolean indicating if you did something to the message
+    // If true, will log and apply delay
+    return wasActiontriggered
+  }
+
+  let beforeTime = new Date(Date.now()).toJSON() // Leave it like this to react from latest
+
+  let count = 0
+  var loop = true
+  while (loop) {
+    const messages = await api.getMessages(channelId, 100, { before: beforeTime })
+
+    // We reached the start of the conversation
+    if (messages.messages.length < 100 && messages.messages.filter(msg => msg.type === "default" && !seenMessageIds.has(msg.id)).length === 0) {
+      loop = false
+      console.log(`[${count}/${amount}] Reached the start of the conversation! Ending.`)
+      continue
+    }
+
+    for (const aMessage of messages.messages) {
+      if (loop === false) break
+
+      // Check if the max amount was reached
+      if (count >= amount) {
+        loop = false
+        console.log(`[${count}/${amount}] Treated the requested amount of messages! Ending.`)
+        break
+      }
+
+      // Check if the message should be reacted
+      if (aMessage.type === "default") {
+        let wasActiontriggered = await actionFn(channelId, aMessage)
+        // Apply delay and log only if return true
+        if (wasActiontriggered) {
+          count++
+          console.log(`[${count}/${amount}] Treated a message! ID=${aMessage.id}`)
+          if (count < amount) await delay(delayMs)
+        }
+      }
+    }
+    await delay(delayMs)
+  }
+}
+```
+
 
 # FAQ
 
