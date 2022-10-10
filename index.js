@@ -242,7 +242,10 @@
     deleteEmoji: (serverId, emojiId) => apiCalv1(`/teams/${serverId}/customReactions/${emojiId}`, 'DELETE'),
 
     delay,
-    apiCall
+    apiCall,
+    apiCallv1,
+    apiCal,
+    apiCalv1
   }
 
   console.log('\n\n\n\n\n\n\nSelfbot loaded! Use it like this: `await api.someFunction()`')
