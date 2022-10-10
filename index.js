@@ -128,7 +128,7 @@
       apiCall(`/channels/${channelId}/messages`, { content: message, repliesToIds: [repliedMessageId], ...body }, 'POST'),
 
     // Check this site to avoid posting wrong embed; https://www.guilded.gg/docs/api/chat/ChatEmbed
-    sendEmbed: (channelId, embed = { title: 'Title', description: 'Description' }) => apiCall(`/channels/${channelId}/messages`, { content: ' ', embeds: [ embed ] }, 'POST'), // if you don't want to set author name/url/icon_url just write undefined. e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
+    sendEmbed: (channelId, embed = { "title": "My Cool Embed", "description": "Some description ;)", "color": Math.floor(Math.random() * 16777215) + 1 }) => apiCall(`/channels/${channelId}/messages`, { content: ' ', embeds: [ embed ] }, 'POST'), // if you don't want to set author name/url/icon_url just write undefined. e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
 
     pinnedMessages: channelId => apiCal(`/channels/${channelId}/pins`),
     
