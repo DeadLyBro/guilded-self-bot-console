@@ -1,6 +1,6 @@
 {
 	
-	authHeader = `Bearer api` // Your Api, change `api` with your `api`. e.g: `Bearer gapi_1234567890ABCDEFGHIJKLMNOPQRSTU`
+  authHeader = `Bearer api` // Your Api, change `api` with your `api`. e.g: `Bearer gapi_1234567890ABCDEFGHIJKLMNOPQRSTU`
 	
   var delay = ms => new Promise(res => setTimeout(res, ms))
   // prettier-ignore
@@ -127,8 +127,7 @@
     replyToMessage: (channelId, repliedMessageId, message, body = {}) =>
       apiCall(`/channels/${channelId}/messages`, { content: message, repliesToIds: [repliedMessageId], ...body }, 'POST'),
 
-    // Use this generator: https://old.message.style/dashboard
-    // Click `+` at the bottom in the embed section then copy the `embed` key in the JSON output.
+    // Check this site to avoid posting wrong embed; https://www.guilded.gg/docs/api/chat/ChatEmbed
     sendEmbed: (channelId, embed = { title: 'Title', description: 'Description' }) => apiCall(`/channels/${channelId}/messages`, { content: ' ', embeds: [ embed ] }, 'POST'), // if you don't want to set author name/url/icon_url just write undefined. e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
 
     pinnedMessages: channelId => apiCal(`/channels/${channelId}/pins`),
