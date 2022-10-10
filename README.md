@@ -109,7 +109,7 @@ const embed = {
   "title": "embed title",
   "description": "embeds support a **different** __subset__ *of* markdown than other markdown fields. <@Ann6LewA>\n\n [links](https://www.guilded.gg) ```\ncheck this code out```\n\n:pizza: time!! ttyl",
   "url": "https://www.guilded.gg",
-  "color": 6118369,
+  "color": Math.floor(Math.random() * 16777215) + 1, // Randomize color
   "timestamp": "2022-04-12T22:14:36.737Z",
   "footer": {
     "icon_url": "https://www.guilded.gg/asset/Logos/logomark/Color/Guilded_Logomark_Color.png",
