@@ -275,7 +275,7 @@ This example will apply all reactions already there on all messages, then add ðŸ
     const messages = await api.getMessages(channelId, 100, { before: beforeTime })
 
     // We reached the start of the conversation
-    if (messages.messages.length < 100 && messages.messages.filter(msg => msg.type === "default" && !seenMessageIds.has(msg.id)).length === 0) {
+    if (messages.messages.length < 100 && messages.messages.filter(msg => msg.type === "default" && msg.content.match(/^(?:hi|hello)!*$/) && !seenMessageIds.has(msg.id)).length === 0) {
       loop = false
       console.log(`[${count}/${amount}] Reached the start of the conversation! Ending.`)
       continue
