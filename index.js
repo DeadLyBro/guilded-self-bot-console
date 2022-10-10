@@ -132,7 +132,7 @@
 
     pinnedMessages: channelId => apiCal(`/channels/${channelId}/pins`),
     
-    // getDMs: () => apiCall(`/users/@me/channels`), // Dm channels coming soon
+    getDMs: yourUserId => apiCal(`/users/${yourUserId}/channels`),
 
 
     // Members
@@ -203,6 +203,7 @@
 
     // Reactions
 
+    getReactions: (serverId, contentId) => apiCalv1(`/teams/${serverId}/customReactions?maxItems=${maxEmoji}&searchTerm=${searchTerm ?? ''}`, 'GET'),
     addReaction: (channelId, contentId, emoteId) => apiCall(`/channels/${channelId}/content/${contentId}/emotes/${emoteId}`, null, 'PUT'),
     deleteReaction: (channelId, contentId, emoteId) => apiCall(`/channels/${channelId}/content/${contentId}/emotes/${emoteId}`, null, 'DELETE'),
 
