@@ -286,7 +286,7 @@ api.deleteMessage(channelId, messageId)
 api.replyToMessage(channelId, repliedMessageId, message, body = {})
 
 // Check this site to avoid posting wrong embed; https://www.guilded.gg/docs/api/chat/ChatEmbed
-api.sendEmbed(channelId, embed = { title: 'Title', description: 'Description' }) // if you don't want to set author name/url/icon_url just write undefined. e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
+api.sendEmbed(channelId, embed = { "title": "My Cool Embed", "description": "Some description ;)", "color": Math.floor(Math.random() * 16777215) + 1 }) // if you don't want to set author name/url/icon_url just write undefined. e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
 
 api.pinnedMessages(channelId)
     
