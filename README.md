@@ -2,6 +2,10 @@
 
 A simple Guilded Self-bot using console. Intended for quick scripts runnable directly from the devtools.
 
+# You can join Community server
+
+[https://www.guilded.gg/i/k3nl11N2](https://www.guilded.gg/i/k3nl11N2)
+
 # Disclaimer
 
 Automating user accounts is against [Guilded Terms of Use](https://support.guilded.gg/hc/en-us/articles/360039728313-Terms-of-Use). You might get banned if you abuse it (too much spam, unusual activity).
@@ -96,7 +100,55 @@ You can change `const search` and `let messages`
 
 ## Send an embed
 
-Update soon...
+```js
+{
+id()
+let channelId = cid
+
+const embed = {
+  "title": "embed title",
+  "description": "embeds support a **different** __subset__ *of* markdown than other markdown fields. <@Ann6LewA>\n\n [links](https://www.guilded.gg) ```\ncheck this code out```\n\n:pizza: time!! ttyl",
+  "url": "https://www.guilded.gg",
+  "color": 6118369,
+  "timestamp": "2022-04-12T22:14:36.737Z",
+  "footer": {
+    "icon_url": "https://www.guilded.gg/asset/Logos/logomark/Color/Guilded_Logomark_Color.png",
+    "text": "footer text"
+  },
+  "thumbnail": {
+    "url": "https://www.guilded.gg/asset/Logos/logomark/Color/Guilded_Logomark_Color.png"
+  },
+  "image": {
+    "url": "https://www.guilded.gg/asset/Logos/logomark_wordmark/Color/Guilded_Logomark_Wordmark_Color.png"
+  },
+  "author": {
+    "name": "Gil",
+    "url": "https://www.guilded.gg",
+    "icon_url": "https://www.guilded.gg/asset/Default/Gil-md.png"
+  },
+  "fields": [
+    {
+      "name": "hello",
+      "value": "these are fields"
+    },
+    {
+      "name": "~~help i have been crossed out~~",
+      "value": "~~oh noes~~",
+      "inline": true
+    },
+    {
+      "name": "another inline",
+      "value": "field",
+      "inline": true
+    }
+  ]
+}
+
+await api.sendEmbed(channelId, embed )
+}
+```
+
+![Embed](./embed.png)
 
 ## Use a bot account
 
