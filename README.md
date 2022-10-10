@@ -371,7 +371,7 @@ api.sendEmbed(channelId, embed = { "title": "My Cool Embed", "description": "Som
 
 api.pinnedMessages(channelId)
     
-// getDMs: () => apiCall(`/users/@me/channels`), // Dm channels coming soon
+api.getDMs(yourUserId)
 
 
 // Members
