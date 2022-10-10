@@ -154,6 +154,25 @@ await api.sendEmbed(channelId, embed )
 
 This specific script only works for user accounts. If you want to use a bot account, you need to use guilded.js!
 
+## Farm XP
+
+```js
+{
+  id()
+  let channelId = cid
+  let message = 'Hi, I like spamming 🦜'
+
+  var loop = true
+  let count = 0
+  while (loop) {
+    const sentMessage = await api.sendMessage(channelId, message)
+    await api.deleteMessage(channelId, sentMessage.message.id)
+    console.log(`Sent ${++count} messages`)
+    await delay(61000) // 61 seconds
+  }
+}
+```
+
 ## Clear messages of user
 
 Delete the `amount` messages from user (`userId`) sent to a channel/DM (`channelId`) appearing before message and wait `delayMs` milliseconds everytime.
