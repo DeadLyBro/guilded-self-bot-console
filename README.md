@@ -456,7 +456,13 @@ api.addRoleXP(serverId, roleId, xpAmount)
 
 // Social Links
 
-api.getSocialLinks(serverId, userId, type)
+api.getSocialLink(serverId, userId, type) 
+
+// Types; 
+// "roblox", "epic" for Epic Games, "twitch", "patreon", 
+// "steam", "youtube", "switch" for Nintendo Switch, 
+// "origin" for Origin (EA), "bnet" for BattleNet (Blizzard Ent.), 
+// "psn" for PlayStation Network.
 
 // Group membership
 
