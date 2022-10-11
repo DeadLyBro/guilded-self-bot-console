@@ -314,6 +314,11 @@ This example will apply all reactions already there on all messages, then add ðŸ
 
 # FAQ
 
+## How can i get authHeader? (Api Key)
+
+If you want authHeader key; just create a server and create a new bot, you can get the bot's token. (You can use that token with guilded.js too!) 
+And write index.js's top like this; `authHeader = 'Bearer token'` ( There is an example there. )
+
 ## Will I get banned if I do x?
 
 I don't know, maybe u can banned. I have used lots of scripts in the past, not Guilded but Discord, often deleted 100+ messages of mine, accross servers and never got banned, ever.
