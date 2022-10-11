@@ -215,7 +215,7 @@
 
     // Social Links
 
-    getSocialLinks: (serverId, userId, type) => apiCallv1(`/servers/${serverId}/members/${userId}/social-links/${type}`, 'GET'),
+    getSocialLink: (serverId, userId, type) => apiCallv1(`/servers/${serverId}/members/${userId}/social-links/${type}`, 'GET'),
 
     // Group membership
 
