@@ -144,7 +144,7 @@ const embed = {
   ]
 }
 
-await api.sendEmbed(channelId, embed )
+await api.sendEmbed(channelId, embed)
 }
 ```
 
@@ -155,6 +155,10 @@ await api.sendEmbed(channelId, embed )
 This specific script only works for user accounts. If you want to use a bot account, you need to use guilded.js!
 
 ## Farm XP
+
+Send a `message` to a channel (`channelId`) every minute then delete it (useful for XP farming in some servers).
+
+You can use `loop = false` at any time to stop it.
 
 ```js
 {
