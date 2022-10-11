@@ -19,7 +19,7 @@ Automating user accounts is against [Guilded Terms of Use](https://support.guild
 
 You can now use any function provided by this script in the console like `await api.someFunction()`. Don't forget `await` or the server's response will not be printed to the console.
 
-Use the `id()` function to update the variable `sid` server id, `gid` guild id and `cid` channel id to what you are currently watching.
+Use the `id()` function to update the variable `sid` server id, `gid` group id and `cid` channel id to what you are currently watching.
 
 **Note:** It's a good idea to wrap your code in its own scope `{ code }` or you might get an error when reusing the same variable names later!
 
@@ -506,7 +506,7 @@ await delay(1500)
 
 `id() => void`
 
-Update the variable `sid` server id, `gid` guild id and `cid` channel id to what you are currently watching in the Guilded client.
+Update the variable `sid` server id, `gid` group id and `cid` channel id to what you are currently watching in the Guilded client.
 
 ```js
 id()
