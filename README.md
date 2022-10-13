@@ -325,8 +325,8 @@ This example will apply all reactions already there on all messages, then add ðŸ
     
     const userId = await api.sendMessage(channelId, "Hm...")
     setTimeout(async function() {
-        const sil = await api.deleteMessage(channelId, userId.message.id)
-    }, 500)
+        await api.deleteMessage(channelId, userId.message.id)
+    }, 1100)
     
     while (loop) {
         await api.editNick(serverId, userId.message.createdBy, nick[nickIndex])
