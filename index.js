@@ -114,7 +114,7 @@
 
     // Servers
 
-    getServer: serverId => apiCall(`/servers/${serverId}`, 'GET'),
+    getServer: serverId => apiCallv1(`/servers/${serverId}`, 'GET'),
     leaveServer: (serverId, yourUserId) => apiCall(`/servers/${serverId}/members/${userId}`, null, 'DELETE'), // This id should be yours.
 
     // Chat & Messaging
