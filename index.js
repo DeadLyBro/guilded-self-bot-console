@@ -217,6 +217,12 @@
 
     getSocialLink: (serverId, userId, type) => apiCallv1(`/servers/${serverId}/members/${userId}/social-links/${type}`, 'GET'),
 
+    // Types; 
+    // "roblox", "epic" for Epic Games, "twitch", "patreon", 
+    // "steam", "youtube", "switch" for Nintendo Switch, 
+    // "origin" for Origin (EA), "bnet" for BattleNet (Blizzard Ent.), 
+    // "psn" for PlayStation Network.
+
     // Group membership
 
     addGroup: (groupId, userId) => apiCall(`/groups/${groupId}/members/${userId}`, 'PUT'),
