@@ -311,6 +311,55 @@ This example will apply all reactions already there on all messages, then add ðŸ
 }
 ```
 
+## Edit Your Nick Multiple Time with Delay
+
+```js
+{
+    id()
+    const nick = ['Nick1', 'Nick2', 'Nick3'] // You can change nicks here. e.g: const nick = ['Foo','Bar']
+    const serverId = sid
+    const channelId = cid
+    var loop = true
+    let nickIndex = 0
+    let count = 0
+    
+    const userId = await api.sendMessage(channelId, "Hm...")
+    setTimeout(async function() {
+        const sil = await api.deleteMessage(channelId, userId.message.id)
+    }, 500)
+    
+    while (loop) {
+        await api.editNick(serverId, userId.message.createdBy, nick[nickIndex])
+	console.log(`Nick changed ${++count} times.`)
+        nickIndex = (nickIndex + 1) % nick.length
+        await api.delay(10 * 1000)  // Wait 10 second, 1000 is equal to one second
+    }
+}
+```
+
+If you want to specify `userId` try this; 
+
+```js
+{
+    id()
+    const nick = ['Nick1', 'Nick2', 'Nick3']
+    const serverId = sid
+    const channelId = cid
+    var loop = true
+    let nickIndex = 0
+    let count = 0
+    
+    const userId = "userId" // Edit here, e.g: const userId = "aBc123"
+    
+    while (loop) {
+        await api.editNick(serverId, userId, nick[nickIndex])
+	console.log(`Nick changed ${++count} times.`)
+        nickIndex = (nickIndex + 1) % nick.length
+        await api.delay(10 * 1000)  // Wait 10 second, 1000 is equal to one second
+    }
+}
+```
+
 
 # FAQ
 
