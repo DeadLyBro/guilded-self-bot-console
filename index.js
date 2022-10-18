@@ -228,6 +228,8 @@
 
     addGroup: (groupId, userId) => apiCall(`/groups/${groupId}/members/${userId}`, 'PUT'),
     removeGroup: (groupId, userId) => apiCall(`/groups/${groupId}/members/${userId}`, 'DELETE'),
+    listGroups: (serverId) => apiCalv1(`/teams/${serverId}/groups`),
+    getGroup: (serverId, groupId) => apiCalv1(`/teams/${serverId}/groups/${groupId}`),
 
     // Role membership
 
