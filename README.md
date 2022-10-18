@@ -523,6 +523,8 @@ api.getSocialLink(serverId, userId, type)
 
 api.addGroup(groupId, userId)
 api.removeGroup(groupId, userId)
+api.listGroups(serverId)
+api.getGroup(serverId, groupId)
 
 // Role membership
 
