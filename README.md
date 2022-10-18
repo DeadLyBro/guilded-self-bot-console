@@ -414,6 +414,7 @@ api.deleteChannel(channelId)
 
 api.getServer(serverId)
 api.leaveServer(serverId, yourUserId) // This id should be yours.
+api.listServers()
 
 // Chat & Messaging
 
