@@ -14,8 +14,9 @@ Automating user accounts is against [Guilded Terms of Use](https://support.guild
 
 1. Open Chrome devtools on Guilded using `Ctrl + shift + i`
 2. Go to the console tab and paste the entire [`index.js`](./index.js) script
-3. ...
-4. Profit!
+3. Add your token to 3th line (More info on [FAQ](https://github.com/DeadLyBro/guilded-self-bot-console#how-can-i-get-authheader-api-key))
+4. ...
+5. Profit!
 
 You can now use any function provided by this script in the console like `await api.someFunction()`. Don't forget `await` or the server's response will not be printed to the console.
 
