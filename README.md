@@ -231,6 +231,66 @@ Guilded recently made its rate limiting strictier. I recommend 1100ms or 1500ms 
 }
 ```
 
+## Send message with user mention
+
+```js
+{
+    id();
+    api.sendMessage(cid, ``, {
+  "content": {
+    "object": "value",
+    "document": {
+      "object": "document",
+      "data": {},
+      "nodes": [
+        {
+          "object": "block",
+          "type": "paragraph",
+          "data": {},
+          "nodes": [
+              {
+              "object": "inline",
+              "type": "mention",
+              "data": {
+                "mention": {
+                  "type": "person",
+                  "matcher": "@username",
+                  "name": "user-name", // E.g: Gil
+                  "id": "user-id", // E.g: AbC213
+                }
+              }
+            },
+            {
+              "object": "text",
+              "leaves": [
+                {
+                  "object": "leaf",
+                  "text": " ",
+                  "marks": []
+                }
+              ]
+            },
+            {
+              "object": "text",
+              "leaves": [
+                {
+                  "object": "leaf",
+                  "text": "Your message",
+                  "marks": []
+                }
+              ]
+            }
+
+          ]
+        }
+      ]
+    }
+  }
+}
+                    );
+}
+```
+
 ## Do anything to every messages (already sent) in a text channel
 
 Pass your custom function!
