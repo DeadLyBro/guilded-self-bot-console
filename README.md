@@ -634,7 +634,7 @@ id()
 
 - `authHeader`: You Guilded account auth token
 - `sid`: Current server id (update to what you are currently watching using `id()`)
-- `gid`: Current guild id (update to what you are currently watching using `id()`)
+- `gid`: Current group id (update to what you are currently watching using `id()`)
 - `cid`: Current channel id (update to what you are currently watching using `id()`)
 
 # License
