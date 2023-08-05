@@ -104,19 +104,19 @@
 
 
   var api = {
-    
-    // Channels
-
-    createChannel: (name, type, serverId, groupId, categoryId) => apiCall(`/channels`, { name, type, serverId, groupId, categoryId }, 'POST'), // type should be; announcements, chat, calendar, forums, media, docs, voice, list, scheduling, or stream.
-    getChannel: channelId => apiCallv1(`/channels/${channelId}`, 'GET'),
-    updateChannel: (channelId, name, topic, isPublic, body = {}) => apiCall(`/channels/${channelId}`, { name: name, topic: topic ?? null, isPublic: isPublic ?? false, ...body} , 'PATCH'),
-    deleteChannel: channelId => apiCall(`/channels/${channelId}`, null, 'DELETE'),
 
     // Servers
 
     getServer: serverId => apiCallv1(`/servers/${serverId}`, 'GET'),
     leaveServer: (serverId, yourUserId) => apiCall(`/servers/${serverId}/members/${userId}`, null, 'DELETE'), // This id should be yours.
     listServers: () => apiCalv1(`/users/me/teams`),
+    
+    // Channels
+
+    createChannel: (name, visibility, type, serverId, groupId, categoryId, parentId) => apiCall(`/channels`, { name, visibility: visibility ?? "public", type, serverId, groupId, categoryId, parentId: parentId ?? undefined }, 'POST'), // type should be; announcements, chat, calendar, forums, media, docs, voice, list, scheduling, or stream. | visibility should be; "private" or "public".
+    getChannel: channelId => apiCallv1(`/channels/${channelId}`, 'GET'),
+    updateChannel: (channelId, name, topic, visibility, body = {}) => apiCall(`/channels/${channelId}`, { name: name, topic: topic ?? null, visibility: visibility ?? false, ...body} , 'PATCH'), // visibility should be; "private" or "public".
+    deleteChannel: channelId => apiCall(`/channels/${channelId}`, null, 'DELETE'),
 
     // Chat & Messaging
 
@@ -129,7 +129,9 @@
       apiCall(`/channels/${channelId}/messages`, { content: message, repliesToIds: [repliedMessageId], ...body }, 'POST'),
 
     // Check this site to avoid posting wrong embed; https://www.guilded.gg/docs/api/chat/ChatEmbed
-    sendEmbed: (channelId, embed = { "title": "My Cool Embed", "description": "Some description ;)", "color": Math.floor(Math.random() * 16777215) + 1 }) => apiCall(`/channels/${channelId}/messages`, { content: ' ', embeds: [ embed ] }, 'POST'), // if you don't want to set author name/url/icon_url just write undefined. e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
+    sendEmbed: (channelId, embed = { "title": "My Cool Embed", "description": "Some description ;)", "color": Math.floor(Math.random() * 16777215) + 1 }) => apiCall(`/channels/${channelId}/messages`, { content: ' ', embeds: [ embed ] }, 'POST'), 
+    // if its need and you don't want to set author name/url/icon_url just write undefined. 
+    // e.g: "author": { "name": undefined, "url": undefined, "icon_url": undefined }
 
     pinnedMessages: channelId => apiCal(`/channels/${channelId}/pins`),
     
